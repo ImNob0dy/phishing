@@ -1,12 +1,11 @@
 from flask import Flask, request, render_template, jsonify
 import numpy as np
 import pandas as pd
-import pickle
+import joblib
 
-# Load the trained model
-model_filename = 'best_phishing_model.pkl'
-with open(model_filename, 'rb') as file:
-    model = pickle.load(file)
+# Load the trained model using joblib
+model_filename = '/home/sagemaker-user/phishing-1/phishing-dector-app/best_phishing_model.joblib'
+model = joblib.load(model_filename)
 
 # Initialize Flask app
 app = Flask(__name__)
